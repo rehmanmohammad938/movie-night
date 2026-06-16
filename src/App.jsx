@@ -11,10 +11,16 @@ const initialMovies = [
 ]
 
 export default function App() {
-  console.log(initialMovies)
   return (
     <div>
-
+      <h1>Movie Night</h1>
+      <ul>
+        {initialMovies.map((movie) => ( 
+          <li key={movie.id}>
+            <div>{movie.title}</div>
+          </li>
+        ))}
+      </ul>
     </div>
   )
 }
