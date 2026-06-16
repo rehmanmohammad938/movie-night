@@ -11,14 +11,27 @@ const initialMovies = [
   { id: 6, title: "Get Out",                            genre: "Horror",    year: 2017, watched: false },
 ]
 
+
 export default function App() {
+  const [movies, setMovies] = useState(initialMovies);
+
+  const toggleWatched = (id) => {
+    setMovies ((preMovies) => 
+      preMovies.map((movie) =>
+        movie.id === id ? {...movie, watched: !movie.watched} : movie
+      )
+    );
+  };
+
   return (
     <div>
       <h1>Movie Night</h1>
       <ul>
-        {initialMovies.map((movie) => ( 
+        {movies.map((movie) => ( 
           <li key={movie.id}>
-            <MovieCard movie={movie} />
+            <MovieCard 
+            movie={movie} 
+            onToggle ={toggleWatched}/>
           </li>
         ))}
       </ul>
