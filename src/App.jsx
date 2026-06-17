@@ -23,9 +23,16 @@ export default function App() {
     );
   };
 
+  const totalMovies = movies.length;
+  const watchedMovies = movies.filter((movie) => movie.watched).length;
+  const unwatchedMovies = totalMovies - watchedMovies;
+
   return (
     <div>
       <h1>Movie Night</h1>
+      <p>
+        Total Movies: {totalMovies} | Watched: {watchedMovies} | Not Watched Yet: {unwatchedMovies} 
+      </p>
       <ul>
         {movies.map((movie) => ( 
           <li key={movie.id}>
